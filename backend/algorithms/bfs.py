@@ -1,37 +1,39 @@
-from .base import Search
+"""BFS — implementado por você (referência para o grupo)."""
+
 from collections import deque
 
+from .base import Search, SearchTrace
+from backend.domain.maze import Maze2D
+
 class BreadthFirstSearch(Search):
-    def _search_impl(self, maze, start, goal):
+    
+    def _search_impl(
+        self,
+        maze: Maze2D,
+        start: tuple[int, int],
+        goal: tuple[int, int],
+        trace: SearchTrace,
+    ) -> dict:
         queue = deque([start])
-        came_from = {start: None}
-        visited_order = []
+        parent: dict[tuple[int, int], tuple[int, int] | None] = {start: None}
+        visited: set[tuple[int, int]] = {start}
+        found = False
 
         while queue:
-            current = queue.popleft()
-            visited_order.append(current)
+            cur = queue.popleft()
+            trace.current(cur, len(queue))
+            trace.visit(cur, len(queue))
 
-            if current == goal:
+            if cur == goal:
+                found = True
                 break
 
-            for neighbor in maze.neighbors(current):
-                if neighbor not in came_from:
-                    came_from[neighbor] = current
-                    queue.append(neighbor)
+            for nb in maze.neighbors(cur):
+                if nb not in visited:
+                    visited.add(nb)
+                    parent[nb] = cur
+                    queue.append(nb)
+                    trace.frontier(nb, len(queue))
 
-        found = goal in came_from
-        path = []
-
-        if found:
-            node = goal
-            
-            while node is not None:
-                path.append(node)
-                node = came_from[node]
-            path.reverse()
-
-        return {
-            "path": path,
-            "visited_order": visited_order,
-            "found": found,
-        }
+        path = trace.path_from_parent(parent, goal) if found else []
+        return {"path": path, "found": found, "visited_order": trace.visited_order}
