@@ -1,0 +1,23 @@
+services:
+  app:
+    build: .
+    container_name: 3d-search-visualizer
+    ports:
+      - "8000:8000"
+    environment:
+      PYTHONPATH: /app
+    restart: unless-stopped
+
+  # Desenvolvimento: recarrega ao editar backend/frontend
+  app-dev:
+    profiles: ["dev"]
+    build: .
+    container_name: 3d-search-visualizer-dev
+    ports:
+      - "8000:8000"
+    environment:
+      PYTHONPATH: /app
+    volumes:
+      - ./backend:/app/backend
+      - ./frontend/public:/app/frontend/public
+    command: uvicorn backend.api.app:app --host 0.0.0.0 --port 8000 --reload
