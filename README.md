@@ -59,7 +59,9 @@ docs/ALGORITMOS.md
 | `algorithms/ids.py` | IDS — a implementar |
 | `algorithms/ucs.py` | UCS — a implementar |
 
-Guia: [docs/ALGORITMOS.md](docs/ALGORITMOS.md)
+Guias:
+- [docs/PROXIMOS_PASSOS.md](docs/PROXIMOS_PASSOS.md) — o que já está pronto e próximos passos para o grupo
+- [docs/ALGORITMOS.md](docs/ALGORITMOS.md) — como implementar seu algoritmo
 
 ## Testes
 
