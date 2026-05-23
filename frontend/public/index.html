@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Search Visualizer</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>3D Search Visualizer</h1>
+        <span id="phase-label">Montar</span>
+        <div class="sep"></div>
+        <label
+          >Linhas
+          <input
+            type="number"
+            id="rows"
+            value="11"
+            min="5"
+            max="21"
+            step="2"
+            style="width: 48px"
+        /></label>
+        <label
+          >Cols
+          <input
+            type="number"
+            id="cols"
+            value="11"
+            min="5"
+            max="21"
+            step="2"
+            style="width: 48px"
+        /></label>
+        <button type="button" id="btn-resize">Aplicar tamanho</button>
+        <button type="button" id="btn-random">Novo labirinto</button>
+        <div class="sep"></div>
+        <button type="button" id="mode-path" class="active">Caminho</button>
+        <button type="button" id="mode-wall">Parede</button>
+        <button type="button" id="mode-start">Início</button>
+        <button type="button" id="mode-goal">Meta</button>
+        <div class="sep"></div>
+        <select id="algo">
+          <option value="BFS">BFS</option>
+          <option value="DFS">DFS</option>
+          <option value="DLS">DLS</option>
+          <option value="IDS">IDS</option>
+          <option value="UCS">UCS</option>
+        </select>
+        <label id="limit-wrap" style="display: none">
+          Limite
+          <input
+            type="number"
+            id="dls-limit"
+            value="80"
+            min="5"
+            max="200"
+            style="width: 52px"
+          />
+        </label>
+        <button type="button" id="btn-run" class="primary">Executar</button>
+        <button type="button" id="btn-play">▶ Animar</button>
+        <button type="button" id="btn-reset-viz">Reiniciar animação</button>
+        <label
+          >Vel.
+          <input
+            type="range"
+            id="speed"
+            min="1"
+            max="25"
+            value="14"
+            style="width: 70px; vertical-align: middle"
+        /></label>
+      </header>
+      <div id="canvas-wrap">
+        <div id="hint">
+          Clique nas células para desenhar caminhos e paredes. Movimento:
+          frente, trás, esquerda, direita.
+        </div>
+        <div id="hud">
+          <div id="legend">
+            <div>
+              <span class="swatch" style="background: #3d5a3d"></span>Chão
+            </div>
+            <div>
+              <span class="swatch" style="background: #4a5568"></span>Parede
+            </div>
+            <div>
+              <span class="swatch" style="background: #34a853"></span>Início
+            </div>
+            <div>
+              <span class="swatch" style="background: #ea4335"></span>Meta
+            </div>
+            <div>
+              <span class="swatch" style="background: #fbbc04"></span>Fronteira
+            </div>
+            <div>
+              <span class="swatch" style="background: #9c27b0"></span>Visitado
+            </div>
+            <div>
+              <span class="swatch" style="background: #00bcd4"></span>Nó atual
+            </div>
+            <div>
+              <span class="swatch" style="background: #ff6d00"></span>Caminho
+              final
+            </div>
+            <div>
+              <span
+                class="swatch"
+                style="background: #ffeb3b; border-radius: 50%"
+              ></span
+              >Bolinha
+            </div>
+          </div>
+          <div id="metrics">Aguardando execução…</div>
+        </div>
+      </div>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
