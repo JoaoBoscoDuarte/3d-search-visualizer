@@ -42,7 +42,7 @@ PYTHONPATH=. uvicorn backend.api.app:app --reload --port 8000
 backend/
   api/           # FastAPI
   domain/        # Maze2D
-  algorithms/    # BFS (pronto) + stubs DFS/DLS/IDS/UCS
+  algorithms/    # BFS, DFS, DLS (prontos) + stubs IDS/UCS
   services/      # Registry de algoritmos
 frontend/public/ # HTML, CSS, JS (módulos separados)
 tests/
@@ -54,8 +54,8 @@ docs/ALGORITMOS.md
 | Arquivo | Algoritmo |
 |---------|-----------|
 | `algorithms/bfs.py` | BFS — implementado |
-| `algorithms/dfs.py` | DFS — a implementar |
-| `algorithms/dls.py` | DLS — a implementar |
+| `algorithms/dfs.py` | DFS — implementado |
+| `algorithms/dls.py` | DLS — implementado |
 | `algorithms/ids.py` | IDS — a implementar |
 | `algorithms/ucs.py` | UCS — a implementar |
 

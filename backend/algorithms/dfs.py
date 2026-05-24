@@ -12,8 +12,26 @@ class DepthFirstSearch(Search):
         goal: tuple[int, int],
         trace: SearchTrace,
     ) -> dict:
-        raise NotImplementedError(
-            "Implemente a busca em profundidade (pilha/LIFO). "
-            "Use trace.current(), trace.visit(), trace.frontier() e "
-            "trace.path_from_parent(parent, goal) ao encontrar a meta."
-        )
+        stack: list[tuple[int, int]] = [start]
+        parent: dict[tuple[int, int], tuple[int, int] | None] = {start: None}
+        visited: set[tuple[int, int]] = {start}
+        found = False
+
+        while stack:
+            cur = stack.pop()
+            trace.current(cur, len(stack))
+            trace.visit(cur, len(stack))
+
+            if cur == goal:
+                found = True
+                break
+
+            for nb in maze.neighbors(cur):
+                if nb not in visited:
+                    visited.add(nb)
+                    parent[nb] = cur
+                    stack.append(nb)
+                    trace.frontier(nb, len(stack))
+
+        path = trace.path_from_parent(parent, goal) if found else []
+        return {"path": path, "found": found, "visited_order": trace.visited_order}

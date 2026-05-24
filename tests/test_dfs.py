@@ -1,6 +1,6 @@
 import pytest
 
-from backend.algorithms.bfs import BreadthFirstSearch
+from backend.algorithms.dfs import DepthFirstSearch
 from backend.domain.maze import Maze2D
 
 MAZE_JSON = {
@@ -16,10 +16,10 @@ MAZE_JSON = {
     "goal": [4, 4],
 }
 
-def test_bfs_finds_goal():
+
+def test_dfs_finds_goal():
     maze = Maze2D.from_json(MAZE_JSON)
-    result = BreadthFirstSearch().search(maze)
+    result = DepthFirstSearch().search(maze)
     assert result["metrics"]["found"] is True
     assert result["metrics"]["pathLength"] > 0
     assert len(result["steps"]) > 0
-# Note: DFS implementation has been added and is tested in `tests/test_dfs.py`.
