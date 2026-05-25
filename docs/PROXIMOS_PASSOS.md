@@ -35,8 +35,8 @@ Para implementar um algoritmo específico, use também [ALGORITMOS.md](ALGORITMO
 | Algoritmo | Arquivo | Status |
 |-----------|---------|--------|
 | **BFS** | `backend/algorithms/bfs.py` | Implementado (referência para o grupo) |
-| **DFS** | `backend/algorithms/dfs.py` | Stub — `NotImplementedError` |
-| **DLS** | `backend/algorithms/dls.py` | Stub — precisa de `depth_limit` |
+| **DFS** | `backend/algorithms/dfs.py` | Implementado (referência: `tests/test_dfs.py`) |
+| **DLS** | `backend/algorithms/dls.py` | Implementado (recebe `depth_limit`; ver `tests/test_dls.py`) |
 | **IDS** | `backend/algorithms/ids.py` | Stub — precisa de `depth_limit` |
 | **UCS** | `backend/algorithms/ucs.py` | Stub — custo uniforme / fila de prioridade |
 
@@ -45,7 +45,8 @@ Para implementar um algoritmo específico, use também [ALGORITMOS.md](ALGORITMO
 | Item | Descrição |
 |------|-----------|
 | **`tests/test_bfs.py`** | BFS encontra a meta em labirinto de exemplo |
-| **Teste de stub** | DFS ainda dispara `NotImplementedError` (comportamento esperado) |
+| **`tests/test_dfs.py`** | DFS encontra a meta (novo teste) |
+| **`tests/test_dls.py`** | DLS encontra a meta com limite suficiente (novo teste) |
 
 ### Frontend — visualização e UX
 
