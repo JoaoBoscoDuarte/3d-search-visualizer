@@ -37,8 +37,8 @@ Para implementar um algoritmo específico, use também [ALGORITMOS.md](ALGORITMO
 | **BFS** | `backend/algorithms/bfs.py` | Implementado (referência para o grupo) |
 | **DFS** | `backend/algorithms/dfs.py` | Implementado (referência: `tests/test_dfs.py`) |
 | **DLS** | `backend/algorithms/dls.py` | Implementado (recebe `depth_limit`; ver `tests/test_dls.py`) |
-| **IDS** | `backend/algorithms/ids.py` | Stub — precisa de `depth_limit` |
-| **UCS** | `backend/algorithms/ucs.py` | Stub — custo uniforme / fila de prioridade |
+| **IDS** | `backend/algorithms/ids.py` | Implementado (recebe `depth_limit`; ver `tests/test_ids.py`) |
+| **UCS** | `backend/algorithms/ucs.py` | Implementado (custo uniforme; ver `tests/test_ucs.py`) |
 
 ### Testes
 
@@ -47,6 +47,8 @@ Para implementar um algoritmo específico, use também [ALGORITMOS.md](ALGORITMO
 | **`tests/test_bfs.py`** | BFS encontra a meta em labirinto de exemplo |
 | **`tests/test_dfs.py`** | DFS encontra a meta (novo teste) |
 | **`tests/test_dls.py`** | DLS encontra a meta com limite suficiente (novo teste) |
+| **`tests/test_ids.py`** | IDS encontra a meta e falha com limite baixo (novo teste) |
+| **`tests/test_ucs.py`** | UCS encontra a meta (novo teste) |
 
 ### Frontend — visualização e UX
 
@@ -78,7 +80,7 @@ Cada pessoa pode “adotar” um arquivo em `backend/algorithms/`:
 | | `dfs.py` | DFS (pilha / LIFO) |
 | | `dls.py` | DLS (profundidade limitada) |
 | | `ids.py` | IDS (aprofundamento iterativo) |
-| | `ucs.py` | UCS (custo uniforme) |
+| | `ucs.py` | UCS (custo uniforme) — implementado |
 
 O **BFS** já serve de modelo — copie a estrutura e adapte a estrutura de dados (fila → pilha, limite de profundidade, heap, etc.).
 
@@ -86,7 +88,7 @@ O **BFS** já serve de modelo — copie a estrutura e adapte a estrutura de dado
 
 ## Próximos passos (prioridade sugerida)
 
-### 1. Implementar os algoritmos restantes (alta prioridade)
+### 1. Implementar os algoritmos restantes (alta prioridade, se houver pendências)
 
 1. Ler [ALGORITMOS.md](ALGORITMOS.md) e estudar `backend/algorithms/bfs.py`.
 2. Implementar `_search_impl` no seu arquivo, usando `trace.current()`, `trace.visit()`, `trace.frontier()` e `trace.path_from_parent()`.
@@ -98,7 +100,7 @@ O **BFS** já serve de modelo — copie a estrutura e adapte a estrutura de dado
 - **DFS:** pilha em vez de fila; mesma lógica de `parent` que o BFS.
 - **DLS:** DFS com profundidade máxima; parâmetro `depth_limit` já vem do construtor.
 - **IDS:** repetir DLS aumentando o limite até encontrar a meta ou esgotar.
-- **UCS:** fila de prioridade por custo (custo de aresta pode ser 1 em todas as células); use `trace` com `cost` se quiser exibir no futuro.
+- **UCS:** implementado; fila de prioridade por custo (custo de aresta pode ser 1 em todas as células); use `trace` com `cost` se quiser exibir no futuro.
 
 ### 2. Visualização da comparação de métricas (média prioridade)
 
