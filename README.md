@@ -56,8 +56,8 @@ docs/ALGORITMOS.md
 | `algorithms/bfs.py` | BFS — implementado |
 | `algorithms/dfs.py` | DFS — implementado |
 | `algorithms/dls.py` | DLS — implementado |
-| `algorithms/ids.py` | IDS — a implementar |
-| `algorithms/ucs.py` | UCS — a implementar |
+| `algorithms/ids.py` | IDS — implementado |
+| `algorithms/ucs.py` | UCS — implementado |
 
 Guias:
 - [docs/PROXIMOS_PASSOS.md](docs/PROXIMOS_PASSOS.md) — o que já está pronto e próximos passos para o grupo

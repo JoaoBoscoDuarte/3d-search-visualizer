@@ -7,7 +7,7 @@ class MazePayload(BaseModel):
     goal: list | None = None
 
 class RunRequest(MazePayload):
-    algorithm: str = Field(..., description="BFS | DFS | DLS | IDS | UCS")
+    algorithm: str = Field(..., description="ASTAR | BFS | DFS | DLS | IDS | UCS")
     dls_limit: int = Field(50, description="Limite de profundidade para DLS/IDS")
 
 class CompareRequest(MazePayload):

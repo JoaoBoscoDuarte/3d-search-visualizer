@@ -1,4 +1,5 @@
 from backend.algorithms import (
+    AStarSearch,
     BreadthFirstSearch,
     DepthFirstSearch,
     DepthLimitedSearch,
@@ -8,6 +9,7 @@ from backend.algorithms import (
 from backend.domain.maze import Maze2D
 
 _REGISTRY: dict[str, type] = {
+    "ASTAR": AStarSearch,
     "BFS": BreadthFirstSearch,
     "DFS": DepthFirstSearch,
     "DLS": DepthLimitedSearch,
