@@ -1,4 +1,4 @@
-"""DFS — a implementar pelo integrante responsável."""
+"""DFS — Implementado por Guilherme Lopes"""
 
 from .base import Search, SearchTrace
 from backend.domain.maze import Maze2D
