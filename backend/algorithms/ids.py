@@ -1,5 +1,3 @@
-"""IDS — a implementar pelo integrante responsável."""
-
 from .base import Search, SearchTrace
 from backend.domain.maze import Maze2D
 

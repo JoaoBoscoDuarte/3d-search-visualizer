@@ -1,5 +1,3 @@
-"""UCS — implementado (custo uniforme)."""
-
 from __future__ import annotations
 
 import heapq

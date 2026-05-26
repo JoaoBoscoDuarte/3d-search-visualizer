@@ -1,5 +1,3 @@
-"""Labirinto 2D: movimento apenas nas 4 direções cardinais."""
-
 from __future__ import annotations
 
 from dataclasses import dataclass

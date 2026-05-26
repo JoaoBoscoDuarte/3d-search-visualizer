@@ -1,5 +1,3 @@
-"""BFS — implementado por você (referência para o grupo)."""
-
 from collections import deque
 
 from .base import Search, SearchTrace

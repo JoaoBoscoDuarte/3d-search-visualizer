@@ -1,5 +1,3 @@
-"""A* — implementado (busca informada com heurística)."""
-
 from __future__ import annotations
 
 import heapq

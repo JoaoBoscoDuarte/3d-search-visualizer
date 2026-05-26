@@ -1,10 +1,3 @@
-"""
-Interface comum para todos os algoritmos de busca.
-
-Cada integrante implementa `_search_impl` no seu arquivo e usa `trace`
-para registrar passos da animação no frontend.
-"""
-
 from __future__ import annotations
 
 import time

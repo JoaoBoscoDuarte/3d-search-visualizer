@@ -1,5 +1,3 @@
-"""Testes para o algoritmo A*."""
-
 import pytest
 
 from backend.domain.maze import Maze2D

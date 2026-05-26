@@ -27,6 +27,7 @@ function bestKey(results, key, activeAlgorithms, higherIsBetter = false) {
     if (!row || row.error || !row.metrics?.found) continue;
     const v = row.metrics[key];
     if (v == null) continue;
+    
     if (
       bestVal === null ||
       (higherIsBetter ? v > bestVal : v < bestVal)
