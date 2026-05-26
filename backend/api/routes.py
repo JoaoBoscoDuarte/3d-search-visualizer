@@ -22,4 +22,11 @@ def run(req: RunRequest):
 
 @router.post("/compare")
 def compare(req: CompareRequest):
-    return {"results": compare_all(req.model_dump(), req.dls_limit)}
+    return {
+        "results": compare_all(
+            req.model_dump(),
+            req.dls_limit,
+            req.selected_algorithms,
+            req.limits,
+        )
+    }

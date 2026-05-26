@@ -2,7 +2,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { COLORS, SCENE } from './config.js';
 
-export function createScene3D(container, mazeModel) {
+export function createScene3D(container, mazeModel, options = {}) {
+  const { interactive = true } = options;
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x0a0e14);
   scene.fog = new THREE.Fog(0x0a0e14, 28, 55);
@@ -14,6 +15,7 @@ export function createScene3D(container, mazeModel) {
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.maxPolarAngle = Math.PI / 2.05;
+  controls.enabled = interactive;
 
   const dirLight = new THREE.DirectionalLight(0xffffff, 1.1);
   dirLight.position.set(8, 14, 6);

@@ -62,8 +62,32 @@
           />
         </label>
         <button type="button" id="btn-run" class="primary">Executar</button>
+        <button type="button" id="btn-compare">Comparar todos</button>
+        <details id="compare-setup">
+          <summary>Opções da comparação</summary>
+          <div id="compare-controls">
+            <strong>Algoritmos:</strong>
+            <label><input type="checkbox" class="compare-algo" value="ASTAR" checked /> A*</label>
+            <label><input type="checkbox" class="compare-algo" value="BFS" checked /> BFS</label>
+            <label><input type="checkbox" class="compare-algo" value="DFS" checked /> DFS</label>
+            <label><input type="checkbox" class="compare-algo" value="DLS" checked /> DLS</label>
+            <label><input type="checkbox" class="compare-algo" value="IDS" checked /> IDS</label>
+            <label><input type="checkbox" class="compare-algo" value="UCS" checked /> UCS</label>
+            <span class="compare-limit-group">
+              Limite DLS
+              <input id="compare-limit-dls" type="number" value="80" min="5" max="400" />
+            </span>
+            <span class="compare-limit-group">
+              Limite IDS
+              <input id="compare-limit-ids" type="number" value="80" min="5" max="400" />
+            </span>
+          </div>
+        </details>
         <button type="button" id="btn-play">▶ Animar</button>
         <button type="button" id="btn-reset-viz">Reiniciar animação</button>
+        <button type="button" id="btn-exit-compare" style="display: none">
+          Voltar (modo único)
+        </button>
         <label
           >Vel.
           <input
@@ -75,7 +99,8 @@
             style="width: 70px; vertical-align: middle"
         /></label>
       </header>
-      <div id="canvas-wrap">
+      <div id="view-single" class="view-pane">
+        <div id="canvas-wrap">
         <div id="hint">
           Clique nas células para desenhar caminhos e paredes. Movimento:
           frente, trás, esquerda, direita.
@@ -117,6 +142,15 @@
           </div>
           <div id="metrics">Aguardando execução…</div>
         </div>
+        </div>
+      </div>
+      <div id="view-compare" class="view-pane hidden">
+        <div id="compare-hint">
+          Comparação simultânea — todos os algoritmos no mesmo labirinto. Use ▶ Animar
+          para reproduzir em paralelo; a tabela abaixo resume as métricas ao final.
+        </div>
+        <div id="compare-grid"></div>
+        <div id="compare-results"></div>
       </div>
     </div>
 

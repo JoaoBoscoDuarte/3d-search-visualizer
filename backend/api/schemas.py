@@ -12,3 +12,5 @@ class RunRequest(MazePayload):
 
 class CompareRequest(MazePayload):
     dls_limit: int = 50
+    selected_algorithms: list[str] | None = None
+    limits: dict[str, int] | None = None

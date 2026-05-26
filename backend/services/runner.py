@@ -33,19 +33,50 @@ def run_algorithm(maze_data: dict, algorithm: str, depth_limit: int = 50) -> dic
     runner = create_runner(algorithm, depth_limit)
     return runner.search(maze)
 
-def compare_all(maze_data: dict, depth_limit: int = 50) -> dict:
+def compare_all(
+    maze_data: dict,
+    depth_limit: int = 50,
+    selected_algorithms: list[str] | None = None,
+    limits: dict[str, int] | None = None,
+) -> dict:
     results = {}
+    selected = selected_algorithms or list(_REGISTRY.keys())
+    algo_limits = limits or {}
 
-    for name in _REGISTRY:
+    for name in selected:
         try:
-            results[name] = run_algorithm(maze_data, name, depth_limit)["metrics"]
-            
-        except NotImplementedError:
+            current_limit = int(algo_limits.get(name, depth_limit))
+            full = run_algorithm(maze_data, name, current_limit)
+            steps = full.get("steps", [])
             results[name] = {
-                "visited": 0,
-                "pathLength": 0,
-                "elapsedMs": 0,
-                "found": False,
-                "error": "Não implementado",
+                "metrics": full["metrics"],
+                "steps": steps,
+                "stepCount": len(steps),
+            }
+
+        except NotImplementedError as e:
+            results[name] = {
+                "metrics": {
+                    "visited": 0,
+                    "pathLength": 0,
+                    "elapsedMs": 0,
+                    "found": False,
+                },
+                "steps": [],
+                "stepCount": 0,
+                "error": str(e),
+            }
+
+        except Exception as e:
+            results[name] = {
+                "metrics": {
+                    "visited": 0,
+                    "pathLength": 0,
+                    "elapsedMs": 0,
+                    "found": False,
+                },
+                "steps": [],
+                "stepCount": 0,
+                "error": str(e),
             }
     return results

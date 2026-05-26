@@ -94,6 +94,16 @@ export function createMazeModel(initialRows = 11, initialCols = 11) {
     };
   }
 
+  function fromJSON(data) {
+    const rows = data.size.rows;
+    const cols = data.size.cols;
+    state.rows = rows;
+    state.cols = cols;
+    state.grid = data.grid.map((row) => [...row]);
+    state.start = [...data.start];
+    state.goal = [...data.goal];
+  }
+
   function baseColor(r, c, COLORS) {
     if (r === state.start[0] && c === state.start[1]) return COLORS.start;
     if (r === state.goal[0] && c === state.goal[1]) return COLORS.goal;
@@ -110,6 +120,7 @@ export function createMazeModel(initialRows = 11, initialCols = 11) {
     setPhase,
     applyCellEdit,
     toJSON,
+    fromJSON,
     baseColor,
     ensureOddDimensions,
   };

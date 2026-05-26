@@ -21,3 +21,24 @@ export async function runSearch(mazePayload, algorithm, dlsLimit) {
 
   return res.json();
 }
+
+export async function compareAll(mazePayload, dlsLimit, selectedAlgorithms = null, limits = null) {
+  const res = await fetch(`${API_BASE}/compare`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      ...mazePayload,
+      dls_limit: dlsLimit,
+      selected_algorithms: selectedAlgorithms,
+      limits,
+    }),
+  });
+
+  if (!res.ok) {
+    const detail = await res.text();
+    throw new Error(detail || res.statusText);
+  }
+
+  const data = await res.json();
+  return data.results || {};
+}
