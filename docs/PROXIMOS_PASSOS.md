@@ -69,38 +69,7 @@ Para implementar um algoritmo específico, use também [ALGORITMOS.md](ALGORITMO
 - [README.md](../README.md) — como rodar o projeto
 - [ALGORITMOS.md](ALGORITMOS.md) — contrato e uso do `trace` na implementação
 
----
-
-## Divisão sugerida do grupo
-
-Cada pessoa pode “adotar” um arquivo em `backend/algorithms/`:
-
-| Responsável (preencher) | Arquivo | Algoritmo |
-|-------------------------|---------|-----------|
-| | `dfs.py` | DFS (pilha / LIFO) |
-| | `dls.py` | DLS (profundidade limitada) |
-| | `ids.py` | IDS (aprofundamento iterativo) |
-| | `ucs.py` | UCS (custo uniforme) — implementado |
-
-O **BFS** já serve de modelo — copie a estrutura e adapte a estrutura de dados (fila → pilha, limite de profundidade, heap, etc.).
-
----
-
 ## Próximos passos (prioridade sugerida)
-
-### 1. Implementar os algoritmos restantes (alta prioridade, se houver pendências)
-
-1. Ler [ALGORITMOS.md](ALGORITMOS.md) e estudar `backend/algorithms/bfs.py`.
-2. Implementar `_search_impl` no seu arquivo, usando `trace.current()`, `trace.visit()`, `trace.frontier()` e `trace.path_from_parent()`.
-3. Rodar no navegador: escolher o algoritmo → **Executar** → **▶ Animar**.
-4. Adicionar testes em `tests/` (espelhar `test_bfs.py`: meta encontrada, sem caminho, DLS com limite baixo, etc.).
-
-**Dicas rápidas:**
-
-- **DFS:** pilha em vez de fila; mesma lógica de `parent` que o BFS.
-- **DLS:** DFS com profundidade máxima; parâmetro `depth_limit` já vem do construtor.
-- **IDS:** repetir DLS aumentando o limite até encontrar a meta ou esgotar.
-- **UCS:** implementado; fila de prioridade por custo (custo de aresta pode ser 1 em todas as células); use `trace` com `cost` se quiser exibir no futuro.
 
 ### 2. Visualização da comparação de métricas (média prioridade)
 
@@ -142,20 +111,6 @@ Arquivos prováveis: `frontend/public/js/search-api.js`, `app.js`, `index.html`,
 - Gráfico de barras das métricas da comparação (Chart.js ou canvas simples).
 - Heurísticas / A* (novo algoritmo, fora do escopo inicial).
 - Vídeo ou GIF curto no README mostrando BFS + comparação.
-
----
-
-## Como validar que sua parte está pronta
-
-Checklist por integrante:
-
-- [ ] Algoritmo roda via **Executar** no navegador sem erro 501
-- [ ] Animação mostra fronteira, visitados e caminho final coerentes
-- [ ] Métricas batem com o esperado (BFS/UCS: caminho mínimo em custo uniforme; DFS: não garante caminho mínimo)
-- [ ] Teste em `tests/test_<seu_algo>.py` passa com `make test` ou `pytest`
-- [ ] Pull request com descrição curta do que foi feito
-
----
 
 ## Comandos úteis
 

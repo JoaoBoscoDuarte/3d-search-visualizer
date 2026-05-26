@@ -1,4 +1,4 @@
-from .astar import AStarSearch
+from .a_star import AStarSearch
 from .bfs import BreadthFirstSearch
 from .dfs import DepthFirstSearch
 from .dls import DepthLimitedSearch
